@@ -8,9 +8,9 @@
         <StackLayout Padding="10, 5, 10, 5">
             <Frame  Margin="0,10,0,0" BorderColor="#075EA6">
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0">
-                    <CheckBox x:Name="checkFirst" Color="#F2413A" CheckedChanged="ChakedCnage"/>
-                    <CheckBox x:Name="checkSeccond" Color="#F2413A" CheckedChanged="ChakedCnage"/>
-                    <CheckBox x:Name="checkThird" Color="#F2413A" CheckedChanged="ChakedCnage"/>
+                    <CheckBox x:Name="checkFirst" Color="#F2413A" CheckedChanged="CheckedChanged"/>
+                    <CheckBox x:Name="checkSeccond" Color="#F2413A" CheckedChanged="CheckedChanged"/>
+                    <CheckBox x:Name="checkThird" Color="#F2413A" CheckedChanged="CheckedChanged"/>
                     <CheckBox x:Name="checkFourth" Color="#F2413A" CheckedChanged="CheckedChanged"/>
                     <Label x:Name="fio" VerticalOptions="Center" />
                     <Button Text="Редактировать" Clicked="EditClicked"/>
