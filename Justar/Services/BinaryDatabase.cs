@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Data;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -13,8 +14,9 @@ namespace Justar.Services
         [Serializable]
         class Database
         {
-            public Dictionary<Guid, GuidStudent> students = new Dictionary<Guid, GuidStudent>();
+            public List<GuidStudent> students = new List<GuidStudent>();
             public List<DateTime> dateTimes = new List<DateTime>();
+            public DataTable actions = new DataTable();
         }
 
         private static Database _database;
@@ -27,6 +29,14 @@ namespace Justar.Services
             using(var file = new FileStream(App.dbPath+".dat", FileMode.OpenOrCreate))
             {
                 _database = (Database)formatter.Deserialize(file);
+            }
+
+            if (!_database.actions.Columns.Contains("dates"))
+            {
+                var column = new DataColumn("dates", typeof(DateTime));
+                column.Unique = true;
+                _database.actions.Columns.Add(column);
+                _database.actions.PrimaryKey = new DataColumn[] { _database.actions.Columns["dates"] };
             }
         }
 
@@ -42,7 +52,7 @@ namespace Justar.Services
 
         public static IReadOnlyList<GuidStudent> GetStudents()
         {
-            return _database.students.Values.ToList();
+            return _database.students;
         }
 
         public static void AddStudent(string fio)
@@ -51,39 +61,27 @@ namespace Justar.Services
             {
                 Fio = fio,
                 Guid = Guid.NewGuid(),
-                Action = DefaultDictionary(),
             };
-            _database.students.Add(student.Guid, student);
+            _database.students.Add(student);
+
+            var column = new DataColumn(student.Guid.ToString(), typeof(bool[]));
+            _database.actions.Columns.Add(column);
         }
 
         public static void SetReport(DateTime date, Guid guid, bool[] state)
         {
-            var _student = _database.students.Where(f => f.Key == guid);
-            if (_student.Any())
+           if(_database.actions.Rows.Contains(date))
+           {
+                _database.actions.Rows.Find(date)[guid.ToString()] = state;
+           }
+           else
             {
-                if(_database.dateTimes.Contains(date))
-                {
-                    _database.students[guid].Action[date] = state;
-                    return;
-                }
-                _database.students[guid].Action.Add(date, state);
-                foreach(var  i in _database.students)
-                {
-                    if(!i.Value.Action.ContainsKey(date))
-                        i.Value.Action.Add(date, new bool[] { true, true, true, true });
-                }
-                _database.dateTimes.Add(date);
+                var row = _database.actions.NewRow();
+                row["dates"] = date;
+                row[guid.ToString()] = state;
+                _database.actions.Rows.Add(row);
             }
         }
 
-        private static Dictionary<DateTime, bool[]> DefaultDictionary()
-        {
-            var dict = new Dictionary<DateTime, bool[]>();
-            foreach(var date in _database.dateTimes)
-            {
-                dict.Add(date, new bool[] { true, true, true, true });
-            }
-            return dict;
-        }
     }
 }
