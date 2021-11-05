@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Justar.Android", "Justar.Android\Justar.Android.csproj", "{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Justar", "Justar\Justar.csproj", "{50310C1C-7F44-40C9-ACC2-58F1405AA602}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Build|Any CPU = Build|Any CPU
+		BuildDebug|Any CPU = BuildDebug|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Build|Any CPU.ActiveCfg = Build|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Build|Any CPU.Build.0 = Build|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Build|Any CPU.Deploy.0 = Build|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.BuildDebug|Any CPU.ActiveCfg = BuildDebug|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.BuildDebug|Any CPU.Build.0 = BuildDebug|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8FD8AB-D8D1-4D1E-A5FD-6A79F25E1091}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Build|Any CPU.ActiveCfg = Build|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Build|Any CPU.Build.0 = Build|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.BuildDebug|Any CPU.ActiveCfg = BuildDebug|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.BuildDebug|Any CPU.Build.0 = BuildDebug|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50310C1C-7F44-40C9-ACC2-58F1405AA602}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B574D6AD-1A33-4883-B46F-239F4675A018}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Justar.Views.AboutPage"
+             xmlns:vm="clr-namespace:Justar.ViewModels"
+             xmlns:js="clr-namespace:Justar"
+             x:DataType="vm:AboutViewModel"
+             Title="Дополнительно">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="20">
+
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="Текущая Дата" VerticalOptions="Center" FontSize="Medium"/>
+                <DatePicker Date="{Binding Date, Mode=TwoWay}"/>
+            </StackLayout>
+
+            <Label Text="Данные за этот день:" TextColor="Black" FontSize="Medium"/>
+
+            <Label BackgroundColor="#96d1ff" Padding="10" Text="{Binding Text}"/>
+
+            <Label Text="{x:Static js:App.dbPath}"/>
+
+            <Button Text="Скопировать" Command="{Binding CopyCommand}"/>
+            <Button Text="Сохранить" Command="{Binding SaveCommand}"/>
+            <Button Text="Обновить" Command="{Binding UpdateCommand}"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

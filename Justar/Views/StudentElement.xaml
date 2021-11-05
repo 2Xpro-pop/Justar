@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Justar.Views.StudentElement">
+
+    <ViewCell.View>
+        <StackLayout Padding="10, 5, 10, 5">
+            <Frame  Margin="0,10,0,0" BorderColor="#075EA6">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0">
+                    <CheckBox x:Name="check" Color="#F2413A" CheckedChanged="ChakedCnage"/>
+                    <Label x:Name="fio" VerticalOptions="Center" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Once"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Double"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

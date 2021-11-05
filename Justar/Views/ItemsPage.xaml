@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Justar.Views.ItemsPage"
+             xmlns:viewModels="clr-namespace:Justar.ViewModels"  
+             xmlns:model="clr-namespace:Justar.Models"
+             xmlns:views="clr-namespace:Justar.Views"
+             x:DataType="viewModels:StudentsViewModel"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Добавить" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Подробнее" Command="{Binding Info}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="0,10, 0, 10">
+        <SearchBar TextChanged="searchBar_TextChanged" x:Name="searchBar"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" x:Name="refresh">
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Student">
+                        <views:StudentState Student="{Binding .}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <!--<RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" x:Name="refresh">
+            <ListView ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Student">
+                        <views:StudentElement StudentId="{Binding Id}" Fio="{Binding Fio}" State="{Binding State}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RefreshView> -->
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:views="clr-namespace:Justar.Views"
+             x:DataType="views:StudentState"
+             x:Class="Justar.Views.StudentState">
+    <ContentView.Resources>
+        <Color x:Key="Absent">#F2413A</Color>
+        <Color x:Key="Late">#A0A60F</Color>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Padding="10, 5, 10, 5">
+            <Frame  Margin="0,10,0,0" BorderColor="#075EA6">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0">
+                    <CheckBox x:Name="check" Color="#F2413A" CheckedChanged="ChakedCnage"/>
+                    <Label x:Name="fio" VerticalOptions="Center" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Once"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Double"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            </StackLayout>
+    </ContentView.Content>
+</ContentView>
