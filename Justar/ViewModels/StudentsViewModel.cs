@@ -14,12 +14,12 @@ namespace Justar.ViewModels
 {
     public class StudentsViewModel : BaseViewModel
     {
-        public ObservableCollection<Student> Items
+        public ObservableCollection<GuidStudent> Items
         {
             get => students;
             set => SetProperty(ref students, value, nameof(Items));
         }
-        ObservableCollection<Student> students;
+        ObservableCollection<GuidStudent> students;
         public Command AddItemCommand { get; }
         public Command RefreshCommand { get; set; }
         public Command Info { get; set; }
@@ -38,8 +38,6 @@ namespace Justar.ViewModels
 
             RefreshCommand = new Command(SetDefaultItems);
 
-            Info = new Command(StudentState.ChangeStyle);
-
             SearchCommand = new Command<string>(Search);
 
             SetDefaultItems();
@@ -49,7 +47,7 @@ namespace Justar.ViewModels
         {
             await Task.Delay(1);
             OnPropertyChanged(nameof(Items));
-            Items = StudentDatabase.Items;
+            Items = new ObservableCollection<GuidStudent>(BinaryDatabase.GetStudents());
             IsRefreshing = false;
         }
 
@@ -61,7 +59,7 @@ namespace Justar.ViewModels
         private void Search(string text)
         {
             text = Regex.Replace(text.ToLower().Trim(), @"\s+", " ");
-            Items =new ObservableCollection<Student>(StudentDatabase.Items.Where(std => Middleware(std.Fio, text)));
+            Items =new ObservableCollection<GuidStudent>(BinaryDatabase.GetStudents().Where(std => Middleware(std.Fio, text)));
         }
 
         private bool Middleware(string fio, string search)

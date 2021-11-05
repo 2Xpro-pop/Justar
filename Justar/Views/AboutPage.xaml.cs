@@ -20,5 +20,12 @@ namespace Justar.Views
             base.OnAppearing();
             await viewModel.SetText();
         }
+
+        public enum ViewStudents
+        {
+            Absent,
+            Present,
+            AbsentAndPresent = Absent | Present,
+        }
     }
 }

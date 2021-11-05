@@ -9,10 +9,10 @@ using Xamarin.Forms;
 
 namespace Justar.Views
 {
-    [QueryProperty(nameof(Student), "student")]
+    [QueryProperty(nameof(GuidStudent), "student")]
     public partial class ItemDetailPage : ContentPage
     {
-        public int Student { get; set; }
+        public string GuidStudent { get; set; }
         public ItemDetailPage()
         {
             InitializeComponent();
@@ -29,11 +29,11 @@ namespace Justar.Views
         {
             try
             {
-                BindingContext = new StudentInfoViewModel(await StudentDatabase.Select(Student));
+                BindingContext = new StudentInfoViewModel(BinaryDatabase.GetStudent(Guid.Parse(GuidStudent)));
             }
             catch(Exception exc)
             {
-                Debug.WriteLine($"{Student} {exc}");
+                Debug.WriteLine($"{GuidStudent} {exc}");
             }
         }
     }

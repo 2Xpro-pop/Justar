@@ -35,8 +35,6 @@ namespace Justar.ViewModels
         DateTime date = DateTime.Today;
         DateTime prev = DateTime.MinValue;
 
-        private List<Report> reports = new List<Report>();
-
         public AboutViewModel()
         {
             CopyCommand = new Command(Copy);
@@ -46,20 +44,7 @@ namespace Justar.ViewModels
 
         public async Task SetText()
         {
-            reports = await ReportDatabase.SelectReports(Date);
-            Debug.WriteLine($"Вызван SetText! {reports.Count}");
-            if(reports.Count > 0 && Date != prev)
-            {
-                Text = string.Join("\n", reports.Where(f => f.StudentState != StudentActionState.Present).Select(conv => conv.Action));
-                prev = Date;
-                ReportDatabase.UpdateStudents(reports);
-            }
-            else
-            {
-                var std = StudentDatabase.Items.ToArray();
-                reports = std.Select(conv => conv.MakeReport(Date)).ToList();
-                Text = string.Join("\n", std.Select(conv => conv.MakeReport(Date).Action));
-            }
+            await Task.Run(() => Text = BinaryDatabase.TextInfo(Date, Views.AboutPage.ViewStudents.Absent));
 
         }
 
@@ -70,7 +55,7 @@ namespace Justar.ViewModels
 
         private async void Save()
         {
-            await ReportDatabase.InsertDate(reports);
+            await Task.Run(BinaryDatabase.Save);
         }
 
         private async void Update()

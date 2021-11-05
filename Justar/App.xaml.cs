@@ -2,6 +2,7 @@
 using Justar.Views;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,6 +19,7 @@ namespace Justar
             StudentDatabase.Init();
             ReportDatabase.Init();
             MainPage = new AppShell();
+            Task.Run(BinaryDatabase.Init);
         }
 
     }

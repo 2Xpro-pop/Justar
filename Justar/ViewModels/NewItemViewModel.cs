@@ -13,8 +13,6 @@ namespace Justar.ViewModels
     public class NewItemViewModel : BaseViewModel
     {
         private string fio;
-        private string email;
-        private string phone;
 
         private Func<string, string, string, Task> display;
 
@@ -32,18 +30,6 @@ namespace Justar.ViewModels
         {
             get => fio;
             set => SetProperty(ref fio, value);
-        }
-
-        public string Email
-        {
-            get => email;
-            set => SetProperty(ref email, value);
-        }
-
-        public string Phone
-        {
-            get => phone;
-            set => SetProperty(ref phone, value);
         }
 
         public Command SaveCommand { get; }
@@ -69,7 +55,7 @@ namespace Justar.ViewModels
                 }
             }
 
-            await StudentDatabase.Insert(new Student { Fio = Fio, Email= Email, Phone = Phone});
+            BinaryDatabase.AddStudent(fio);
 
             await Shell.Current.GoToAsync("..");
         }

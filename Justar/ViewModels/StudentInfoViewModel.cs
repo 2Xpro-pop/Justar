@@ -9,28 +9,16 @@ namespace Justar.ViewModels
 {
     public class StudentInfoViewModel : BaseViewModel
     {
-        private Student student;
-        public int Id
+        private GuidStudent student;
+        public string Id
         {
-            get => student.Id;
+            get => student.Guid.ToString();
         }
 
         public string Fio
         {
             get => student.Fio;
             set => SetProperty(fio => student.Fio = fio, value, nameof(Fio));
-        }
-
-        public string Email
-        {
-            get => student.Email;
-            set => SetProperty(email => student.Email = email, value, nameof(Email));
-        }
-
-        public string Phone
-        {
-            get => student.Phone;
-            set => SetProperty(phone => student.Phone = phone, value, nameof(Phone));
         }
 
         public string Title
@@ -41,7 +29,7 @@ namespace Justar.ViewModels
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
-        public StudentInfoViewModel(Student student)
+        public StudentInfoViewModel(GuidStudent student)
         {
             this.student = student;
             SaveCommand = new Command(Save);
@@ -50,14 +38,13 @@ namespace Justar.ViewModels
 
         private async void Delete()
         {
-            await ReportDatabase.DeleteStudent(student);
-            await StudentDatabase.Delete(student);
+            BinaryDatabase.DeleteStudent(student.Guid);
             await Shell.Current.GoToAsync("..");
         }
 
         private async void Save()
         {
-            await StudentDatabase.Update(student);
+            BinaryDatabase.UpdateFio(student.Guid, student.Fio);
             await Shell.Current.GoToAsync("..");
         }
 

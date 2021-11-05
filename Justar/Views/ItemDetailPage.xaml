@@ -9,10 +9,6 @@
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Фио:" FontSize="Medium" />
         <Editor Text="{Binding Fio}" FontSize="Small"/>
-        <Label Text="Номер:" FontSize="Medium" />
-        <Editor Text="{Binding Phone}" FontSize="Small"/>
-        <Label Text="Email:" FontSize="Medium"/>
-        <Editor Text="{Binding Email}" FontSize="Small"/>
         <Button Text="Сохранить" Command="{Binding SaveCommand}"/>
         <Button Text="Удалить" Command="{Binding DeleteCommand}"/>
     </StackLayout>

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Justar.Models
 {
-    [Serizable]
+    [Serializable]
     public class GuidStudent
     {
         public Guid Guid { get; set; }

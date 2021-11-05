@@ -10,7 +10,6 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Добавить" Command="{Binding AddItemCommand}" />
-        <ToolbarItem Text="Подробнее" Command="{Binding Info}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="0,10, 0, 10">
